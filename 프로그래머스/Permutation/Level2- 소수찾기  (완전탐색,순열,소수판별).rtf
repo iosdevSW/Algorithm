@@ -1,0 +1,94 @@
+{\rtf1\ansi\ansicpg949\cocoartf2638
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fnil\fcharset129 AppleSDGothicNeo-Regular;}
+{\colortbl;\red255\green255\blue255;\red252\green95\blue163;\red31\green31\blue36;\red255\green255\blue255;
+\red65\green161\blue192;\red208\green168\blue255;\red161\green103\blue230;\red161\green103\blue230;\red208\green191\blue105;
+\red103\green183\blue164;\red108\green121\blue134;}
+{\*\expandedcolortbl;;\csgenericrgb\c98839\c37355\c63833;\csgenericrgb\c12054\c12284\c14131;\csgenericrgb\c100000\c100000\c100000\c85000;
+\csgenericrgb\c25490\c63137\c75294;\csgenericrgb\c81681\c65692\c99927;\csgenericrgb\c63137\c40392\c90196;\csgenericrgb\c63232\c40219\c90115;\csgenericrgb\c81498\c74939\c41233;
+\csgenericrgb\c40538\c71705\c64209;\csgenericrgb\c42394\c47462\c52518;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab577
+\pard\tx577\pardeftab577\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf2 \cb3 import\cf4  Foundation\
+\
+\cf2 var\cf4  \cf5 result\cf4  = [\cf6 Int\cf4 ]()\
+\
+\cf2 func\cf4  \cf5 solution\cf4 (\cf5 _\cf4  numbers:\cf6 String\cf4 ) -> \cf6 Int\cf4  \{\
+    \cf2 let\cf4  numbers = numbers.\cf7 map\cf4 \{ \cf6 Int\cf4 (\cf6 String\cf4 ($0))! \}\
+    \cf2 let\cf4  visited = [\cf6 Bool\cf4 ].\cf7 init\cf4 (\cf7 repeating\cf4 : \cf2 false\cf4 , \cf7 count\cf4 : numbers.\cf8 count\cf4 )\
+    \cf2 var\cf4  total = \cf9 0\cf4 \
+    \
+    \cf2 for\cf4  count \cf2 in\cf4  \cf9 1\cf4 ...numbers.\cf8 count\cf4  \{\
+        permutation(numbers, depth: \cf9 0\cf4 , count: count, selected: [], visited: visited)\
+    \}\
+    \
+    \cf2 for\cf4  num \cf2 in\cf4  \cf10 result\cf4  \{\
+        \cf2 if\cf4  isPrime(number: num) \{\
+            total += \cf9 1\cf4 \
+        \}\
+    \}\
+\
+    \cf2 return\cf4  total\
+\}\
+\
+\cf2 func\cf4  \cf5 permutation\cf4 (\cf5 _\cf4  numbers: [\cf6 Int\cf4 ], \cf5 depth\cf4 : \cf6 Int\cf4 , \cf5 count\cf4 : \cf6 Int\cf4 , \cf5 selected\cf4 : [\cf6 Int\cf4 ],\cf5 visited\cf4 : [\cf6 Bool\cf4 ]) \{\
+    \cf2 var\cf4  selected = selected\
+    \cf2 var\cf4  visited = visited\
+    \
+    \cf2 if\cf4  count == depth \{ \cf11 // 
+\f1 \'b4\'d9
+\f0  
+\f1 \'bb\'cc\'be\'d2\'c0\'b8\'b8\'e9
+\f0  
+\f1 \'b9\'dd\'c8\'af
+\f0 \cf4 \
+        \cf2 let\cf4  num = selected.\cf7 map\cf4 \{\cf6 String\cf4 ($0)\}.\cf7 joined\cf4 ()\
+        \cf2 if\cf4  !\cf10 result\cf4 .\cf7 contains\cf4 (\cf6 Int\cf4 (num)!) \{\
+            \cf10 result\cf4 .\cf7 append\cf4 (\cf6 Int\cf4 (num)!)\
+        \}\
+        \
+        \cf2 return\cf4 \
+    \}\
+    \
+    \cf2 for\cf4  (idx,num) \cf2 in\cf4  numbers.\cf7 enumerated\cf4 () \{\
+        \cf2 if\cf4  visited[idx] \{ \cf2 continue\cf4  \} \cf11 // 
+\f1 \'c1\'df\'ba\'b9
+\f0  
+\f1 \'c1\'a6\'b0\'c5
+\f0 \cf4 \
+         \
+        selected.\cf7 append\cf4 (num)\
+        visited[idx] = \cf2 true\cf4  \cf11 // 
+\f1 \'c3\'df\'b0\'a1
+\f0 \cf4 \
+        permutation(numbers, depth: depth + \cf9 1\cf4 , count: count, selected: selected, visited: visited)\
+        \
+        selected.\cf7 popLast\cf4 () \cf11 //
+\f1 \'b2\'a8\'b3\'bb\'bc\'ad
+\f0  
+\f1 \'b4\'d9\'c0\'bd
+\f0  
+\f1 \'b9\'dd\'ba\'b9
+\f0 \cf4 \
+        visited[idx] = \cf2 false\cf4  \cf11 // -\cf4 \
+    \}\
+\}\
+\
+\cf11 //
+\f1 \'bc\'d2\'bc\'f6
+\f0  
+\f1 \'c6\'c7\'ba\'b0
+\f0 \cf4 \
+\cf2 func\cf4  \cf5 isPrime\cf4 (\cf5 number\cf4 : \cf6 Int\cf4 )->\cf6 Bool\cf4  \{\
+    \cf2 if\cf4  number == \cf9 0\cf4  \{ \cf2 return\cf4  \cf2 false\cf4  \}\
+    \cf2 if\cf4  (number < \cf9 4\cf4 ) \{\
+            \cf2 return\cf4  number == \cf9 1\cf4  ? \cf2 false\cf4  : \cf2 true\cf4 \
+    \}\
+    \
+    \cf2 for\cf4  num \cf2 in\cf4  \cf9 2\cf4 ...\cf6 Int\cf4 (\cf7 sqrt\cf4 (\cf6 Double\cf4 (number))) \{\
+        \cf2 if\cf4  number % num == \cf9 0\cf4   \{ \cf2 return\cf4   \cf2 false\cf4  \}\
+    \}\
+    \cf2 return\cf4  \cf2 true\cf4 \
+\}\
+}
