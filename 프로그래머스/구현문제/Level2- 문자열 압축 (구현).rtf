@@ -1,0 +1,132 @@
+{\rtf1\ansi\ansicpg949\cocoartf2638
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fnil\fcharset129 AppleSDGothicNeo-Regular;}
+{\colortbl;\red255\green255\blue255;\red252\green95\blue163;\red31\green31\blue36;\red255\green255\blue255;
+\red65\green161\blue192;\red208\green168\blue255;\red108\green121\blue134;\red161\green103\blue230;\red208\green191\blue105;
+\red161\green103\blue230;\red252\green106\blue93;}
+{\*\expandedcolortbl;;\csgenericrgb\c98839\c37355\c63833;\csgenericrgb\c12054\c12284\c14131;\csgenericrgb\c100000\c100000\c100000\c85000;
+\csgenericrgb\c25490\c63137\c75294;\csgenericrgb\c81681\c65692\c99927;\csgenericrgb\c42394\c47462\c52518;\csgenericrgb\c63232\c40219\c90115;\csgenericrgb\c81498\c74939\c41233;
+\csgenericrgb\c63137\c40392\c90196;\csgenericrgb\c98912\c41558\c36568;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab577
+\pard\tx577\pardeftab577\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf2 \cb3 import\cf4  Foundation\
+\
+\cf2 func\cf4  \cf5 solution\cf4 (\cf5 _\cf4  s:\cf6 String\cf4 ) -> \cf6 Int\cf4  \{\
+    \cf2 var\cf4  newArray = [\cf6 Int\cf4 ]()\
+    \cf7 //
+\f1 \'b9\'ae\'c0\'da\'bf\'ad
+\f0  
+\f1 \'c5\'a9\'b1\'e2\'c0\'c7
+\f0  
+\f1 \'c0\'fd\'b9\'dd
+\f0  
+\f1 \'b8\'b8\'c5\'ad
+\f0  
+\f1 \'b9\'dd\'ba\'b9
+\f0 \cf4 \
+    \cf2 if\cf4  s.\cf8 count\cf4  == \cf9 1\cf4  \{\
+        \cf2 return\cf4  \cf9 1\cf4 \
+    \}\
+    \cf2 for\cf4  num \cf2 in\cf4  \cf9 1\cf4 ...s.\cf8 count\cf4 /\cf9 2\cf4  \{\
+        \cf7 // num
+\f1 \'b4\'dc\'c0\'a7\'b7\'ce
+\f0  
+\f1 \'b9\'ae\'c0\'da\'bf\'ad
+\f0  
+\f1 \'c0\'da\'b8\'a3\'b1\'e2
+\f0 \cf4 \
+        \cf2 var\cf4  slicingStr = slicingString(str: s, num: num)\
+        \cf2 var\cf4  array = [\cf8 String\cf4 ]()\
+        \cf7 // 
+\f1 \'c1\'df\'ba\'b9
+\f0  
+\f1 \'b9\'ae\'c0\'da
+\f0  
+\f1 \'c3\'bc\'c5\'a9
+\f0 \cf4 \
+       \cf2 while\cf4  !slicingStr.\cf8 isEmpty\cf4  \{\
+           \cf2 var\cf4  count = \cf9 1\cf4 \
+           \
+           \cf2 if\cf4  \cf2 let\cf4  last = array.\cf8 last\cf4  \{\
+               \cf2 if\cf4  \cf2 var\cf4  first = slicingStr.\cf10 first\cf4  \{\
+                   \cf2 while\cf4  first == last \{ \cf7 // 
+\f1 \'b0\'b0\'c0\'b8\'b8\'e9
+\f0  1 
+\f1 \'c1\'f5\'b0\'a1
+\f0 \cf4 \
+                       count += \cf9 1\cf4 \
+                       slicingStr.\cf10 removeFirst\cf4 ()\
+                       first = slicingStr.\cf10 first\cf4  ?? \cf11 ""\cf4 \
+                   \}\
+               \}\
+           \}\
+           \cf2 if\cf4  count == \cf9 1\cf4  \{ \cf7 // 
+\f1 \'c1\'df\'ba\'b9\'c0\'cc
+\f0  
+\f1 \'be\'f8\'be\'fa\'c0\'b8\'b8\'e9
+\f0  
+\f1 \'b9\'ae\'c0\'da\'bf\'ad
+\f0  
+\f1 \'c3\'df\'b0\'a1
+\f0 \cf4 \
+               \cf2 let\cf4  first = slicingStr.\cf10 removeFirst\cf4 ()\
+               array.\cf10 append\cf4 (first)\
+           \}\cf2 else\cf4  \{ \cf7 // 
+\f1 \'c1\'df\'ba\'b9\'c0\'cc
+\f0  
+\f1 \'c0\'d6\'be\'fa\'c0\'b8\'b8\'e9
+\f0 \cf4 \
+               array.\cf10 append\cf4 (\cf11 "\cf4 \\(count)\cf11 "\cf4 )\
+           \}\
+       \}\
+        newArray.\cf10 append\cf4 (array.\cf10 joined\cf4 ().\cf8 count\cf4 )\
+    \}\
+    \
+    \cf2 return\cf4  newArray.\cf10 min\cf4 ()!\
+\}\
+\
+\cf7 //
+\f1 \'b9\'ae\'c0\'da\'bf\'ad
+\f0  
+\f1 \'c2\'c9\'b0\'b3\'b4\'c2
+\f0  
+\f1 \'c7\'d4\'bc\'f6
+\f0 \cf4 \
+\cf2 func\cf4  \cf5 slicingString\cf4 (\cf5 str\cf4 : \cf6 String\cf4 , \cf5 num\cf4 : \cf6 Int\cf4 )->[\cf8 String\cf4 ] \{\
+    \cf2 var\cf4  str = str\
+    \cf2 var\cf4  result = [\cf8 String\cf4 ]()\
+    \
+    \
+    \cf2 while\cf4  str.\cf8 count\cf4  >= num \{ \cf7 //
+\f1 \'b9\'ae\'c0\'da\'bf\'ad\'c0\'c7
+\f0  
+\f1 \'b1\'e6\'c0\'cc\'b0\'a1
+\f0  
+\f1 \'b3\'aa\'b4\'b2\'be\'df
+\f0  
+\f1 \'c7\'cf\'b4\'c2
+\f0  
+\f1 \'b1\'e6\'c0\'cc\'ba\'b8\'b4\'d9
+\f0  
+\f1 \'c0\'db\'be\'c6\'c1\'fa\'b6\'a7\'b1\'ee\'c1\'f6
+\f0  
+\f1 \'b9\'dd\'ba\'b9
+\f0 \cf4 \
+        \cf2 let\cf4  index = str.\cf10 index\cf4 (str.\cf8 startIndex\cf4 , \cf10 offsetBy\cf4 : num-\cf9 1\cf4 )\
+        \cf2 let\cf4  string = \cf6 String\cf4 (str[str.\cf8 startIndex\cf4 ...index])\
+        \
+        str.\cf10 removeFirst\cf4 (num)\
+        result.\cf10 append\cf4 (string)\
+    \}\
+    \
+    result.\cf10 append\cf4 (str) \cf7 // 
+\f1 \'b3\'aa\'b8\'d3\'c1\'f6\'b5\'b5
+\f0  
+\f1 \'c3\'df\'b0\'a1
+\f0 \cf4 \
+    \
+    \cf2 return\cf4  result\
+\}\
+\
+}
