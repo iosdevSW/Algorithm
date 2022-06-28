@@ -1,0 +1,142 @@
+{\rtf1\ansi\ansicpg949\cocoartf2638
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fnil\fcharset129 AppleSDGothicNeo-Regular;}
+{\colortbl;\red255\green255\blue255;\red255\green255\blue255;\red31\green31\blue36;\red252\green95\blue163;
+\red65\green161\blue192;\red208\green168\blue255;\red161\green103\blue230;\red108\green121\blue134;\red161\green103\blue230;
+\red252\green106\blue93;\red208\green191\blue105;}
+{\*\expandedcolortbl;;\csgenericrgb\c100000\c100000\c100000\c85000;\csgenericrgb\c12054\c12284\c14131;\csgenericrgb\c98839\c37355\c63833;
+\csgenericrgb\c25490\c63137\c75294;\csgenericrgb\c81681\c65692\c99927;\csgenericrgb\c63232\c40219\c90115;\csgenericrgb\c42394\c47462\c52518;\csgenericrgb\c63137\c40392\c90196;
+\csgenericrgb\c98912\c41558\c36568;\csgenericrgb\c81498\c74939\c41233;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab577
+\pard\tx577\pardeftab577\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf2 \cb3 // 
+\f1 \'c3\'b9 \'b9\'f8\'c2\'b0 \'c7\'ae\'c0\'cc -> \'b8\'f0\'b5\'e7 \'c5\'d7\'bd\'ba\'c6\'ae\'c4\'c9\'c0\'cc\'bd\'ba \'c5\'eb\'b0\'fa\'c7\'cf\'c1\'f6\'b8\'b8 \'c8\'bf\'c0\'b2\'bc\'ba \'b6\'b3\'be\'ee\'c1\'fc
+\f0 \cf4 \
+import\cf2  Foundation\
+\
+\cf4 func\cf2  \cf5 solution\cf2 (\cf5 _\cf2  s:\cf6 String\cf2 ) -> [\cf6 Int\cf2 ] \{\
+    \cf4 var\cf2  tupple = [[\cf7 String\cf2 ]]()\
+    \cf4 var\cf2  stack = [\cf6 Int\cf2 ]()\
+    \
+    \cf8 //
+\f1 \'c6\'a9\'c7\'c3
+\f0  
+\f1 \'b3\'aa\'b4\'a9\'b1\'e2
+\f0 \cf2 \
+    \cf4 var\cf2  split = s.\cf9 split\cf2 (\cf9 separator\cf2 : \cf10 "\}"\cf2 ).\cf9 map\cf2 \{\cf6 String\cf2 ($0)\}\
+    split.\cf9 forEach\cf2 \{ str \cf4 in\cf2 \
+        \cf4 let\cf2  element = str.\cf9 split\cf2 (\cf9 separator\cf2 : \cf10 ","\cf2 ).\cf9 map\cf2 \{\cf6 String\cf2 ($0)\}\
+        tupple.\cf9 append\cf2 (element)\
+    \}\
+    \
+    \cf8 // 
+\f1 \'bc\'fd\'c0\'da\'b8\'b8
+\f0  
+\f1 \'b0\'c5\'b8\'a3\'b1\'e2
+\f0 \cf2 \
+    \cf4 for\cf2  (\cf9 index\cf2 ,\cf9 element\cf2 ) \cf4 in\cf2  tupple.\cf9 enumerated\cf2 () \{\
+        \cf4 for\cf2  idx \cf4 in\cf2  \cf11 0\cf2 ...\cf9 element\cf2 .\cf7 count\cf2 -\cf11 1\cf2 \{\
+            \cf4 let\cf2  result = \cf9 element\cf2 [idx].\cf9 replacingOccurrences\cf2 ( \cf9 of\cf2 :\cf10 "[^0-9]"\cf2 , \cf9 with\cf2 : \cf10 ""\cf2 , \cf9 options\cf2 : .\cf7 regularExpression\cf2 )\
+            tupple[\cf9 index\cf2 ][idx] = result\
+        \}\
+    \}\
+\
+    tupple.\cf9 sort\cf2 (\cf9 by\cf2 : \{$0.\cf7 count\cf2  < $1.\cf7 count\cf2 \}) \cf8 //
+\f1 \'bc\'f8\'bc\'ad\'b4\'eb\'b7\'ce
+\f0  
+\f1 \'c1\'a4\'b7\'c4
+\f0 \cf2 \
+    \
+    \cf8 //
+\f1 \'c1\'df\'ba\'b9
+\f0  
+\f1 \'c1\'a6\'b0\'c5\'c7\'cf\'b0\'ed
+\f0  
+\f1 \'bd\'ba\'c5\'c3\'bf\'a1
+\f0  
+\f1 \'c3\'df\'b0\'a1
+\f0 \cf2 \
+    tupple.\cf9 forEach\cf2 \{ str \cf4 in\cf2 \
+        str.\cf9 forEach\cf2 \{ num \cf4 in\cf2 \
+            \cf4 let\cf2  num = \cf6 Int\cf2 (\cf6 String\cf2 (num))!\
+            \cf4 if\cf2  !stack.\cf9 contains\cf2 (num) \{\
+                stack.\cf9 append\cf2 (num)\
+            \}\
+        \}\
+    \}\
+\
+    \cf4 return\cf2  stack\
+\}\
+
+\f1 \
+// \'b5\'ce\'b9\'f8\'c2\'b0 \'c7\'ae\'c0\'cc -> \'b0\'a3\'b0\'e1\'c7\'cf\'b0\'ed \'c8\'bf\'c0\'b2\'bc\'ba \'c7\'e2\'bb\'f3\
+\
+
+\f0 \cf4 import\cf2  Foundation\
+\
+\cf4 func\cf2  \cf5 solution\cf2 (\cf5 _\cf2  s:\cf6 String\cf2 ) -> [\cf6 Int\cf2 ] \{\
+    \cf4 var\cf2  s = s\
+    \cf4 var\cf2  answer = [\cf6 Int\cf2 ]()\
+    s.\cf9 removeFirst\cf2 (\cf11 2\cf2 ) \cf8 // \{\{ 
+\f1 \'c1\'a6\'b0\'c5
+\f0 \cf2 \
+    s.\cf9 removeLast\cf2 (\cf11 2\cf2 ) \cf8 // \}\} 
+\f1 \'c1\'a6\'b0\'c5
+\f0 \cf2 \
+    \
+    \cf4 var\cf2  tupples = s.\cf9 components\cf2 (\cf9 separatedBy\cf2 : \cf10 "\},\{"\cf2 ) \cf8 //\},\{
+\f1 \'b4\'dc\'c0\'a7\'b7\'ce
+\f0  
+\f1 \'b3\'aa\'b4\'ae
+\f0 \cf2 \
+            .\cf9 map\cf2  \{ $0.\cf9 components\cf2 (\cf9 separatedBy\cf2 : \cf10 ","\cf2 ).\cf9 map\cf2  \{ \cf6 Int\cf2 ($0)! \} \}\
+            .\cf9 sorted\cf2  \{ $0.\cf7 count\cf2  < $1.\cf7 count\cf2  \} \cf8 // 
+\f1 \'c1\'a4\'b7\'c4
+\f0 \cf2 \
+            \
+        \
+    tupples.\cf9 forEach\cf2  \{\
+            \cf8 // Set
+\f1 \'c0\'c7
+\f0  
+\f1 \'c2\'f7\'c1\'fd\'c7\'d5
+\f0  
+\f1 \'c7\'d4\'bc\'f6
+\f0  
+\f1 \'c0\'cc\'bf\'eb
+\f0  
+\f1 \'c1\'df\'ba\'b9
+\f0  
+\f1 \'be\'c8\'b5\'c7\'b4\'c2
+\f0  
+\f1 \'bc\'f6
+\f0  
+\f1 \'b0\'e1\'b0\'fa
+\f0  
+\f1 \'b9\'e8\'bf\'ad\'bf\'a1
+\f0  
+\f1 \'c3\'df\'b0\'a1
+\f0 \cf2 \
+            \cf8 // 
+\f1 \'be\'ee\'c2\'f7\'c7\'c7
+\f0  1
+\f1 \'b0\'b3\'be\'bf
+\f0  
+\f1 \'c3\'df\'b0\'a1
+\f0  
+\f1 \'b5\'c7\'b9\'c7\'b7\'ce
+\f0  first
+\f1 \'b7\'ce
+\f0  
+\f1 \'b9\'d9\'b7\'ce
+\f0  
+\f1 \'c3\'df\'b0\'a1
+\f0 \cf2 \
+            answer.\cf9 append\cf2 (\cf6 Array\cf2 (\cf6 Set\cf2 ($0).\cf9 subtracting\cf2 (answer)).\cf9 first\cf2 !)\
+        \}\
+        \cf4 return\cf2  answer\
+    \}\
+\
+\
+}
