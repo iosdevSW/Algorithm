@@ -1,0 +1,138 @@
+{\rtf1\ansi\ansicpg949\cocoartf2638
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset129 AppleSDGothicNeo-Regular;\f1\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red252\green95\blue163;\red31\green31\blue36;\red255\green255\blue255;
+\red65\green161\blue192;\red208\green168\blue255;\red108\green121\blue134;\red208\green191\blue105;\red161\green103\blue230;
+\red161\green103\blue230;}
+{\*\expandedcolortbl;;\csgenericrgb\c98839\c37355\c63833;\csgenericrgb\c12054\c12284\c14131;\csgenericrgb\c100000\c100000\c100000\c85000;
+\csgenericrgb\c25490\c63137\c75294;\csgenericrgb\c81681\c65692\c99927;\csgenericrgb\c42394\c47462\c52518;\csgenericrgb\c81498\c74939\c41233;\csgenericrgb\c63137\c40392\c90196;
+\csgenericrgb\c63232\c40219\c90115;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww25400\viewh13000\viewkind0
+\deftab577
+\pard\tx577\pardeftab577\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf2 \cb3 // \'c3\'b9 \'c7\'ae\'c0\'cc\'b4\'c2 \'b8\'f0\'b5\'e7 \'c0\'bd\'bd\'c4\'c0\'bb \'c1\'df\'ba\'b9\'be\'f8\'c0\'cc \'b3\'aa\'bf\'ad\'c7\'cf\'b0\'ed \'b3\'aa\'bf\'ad\'b5\'c8 \'c0\'bd\'bd\'c4\'b5\'e9\'b7\'ce \'b0\'b3\'bc\'f6\'ba\'b0 \'bc\'bc\'c6\'ae\'b8\'de\'b4\'ba\'b8\'a6 \'c2\'a5\'bc\'ad
+\f1 \
+
+\f0 // \'c6\'f7\'c7\'d4\'b5\'c7\'b4\'c2\'c1\'f6\'b8\'a6 \'c3\'a3\'be\'c6\'ba\'b8\'be\'d2\'c0\'b8\'b3\'aa \'c5\'d7\'bd\'ba\'c6\'ae\'c4\'c9\'c0\'cc\'bd\'ba 13,14,15\'bf\'a1\'bc\'ad \'bd\'c3\'b0\'a3 \'c3\'ca\'b0\'fa\'b0\'a1 \'b3\'b5\'b0\'ed\
+// 2\'b9\'f8\'c2\'b0 \'b9\'e6\'b9\'fd\'c0\'b8\'b7\'ce \'b8\'f0\'b5\'e7 \'c0\'bd\'bd\'c4\'c0\'bb \'b3\'aa\'bf\'ad \'c8\'c4 \'c5\'d7\'bd\'ba\'c6\'ae\'c4\'c9\'c0\'cc\'bd\'ba\'b8\'a6 \'b1\'b8\'c7\'d1\'b0\'d4 \'be\'c6\'b4\'cf\'b6\'f3\
+// \'bc\'d5\'b4\'d4\'c0\'cc \'bd\'c3\'c5\'b2 \'c0\'bd\'bd\'c4\'ba\'b0\'b7\'ce \'c1\'b6\'c7\'d5\'c0\'bb \'b1\'b8\'c7\'d8\'b5\'ce\'b0\'ed \'b5\'f1\'bc\'c5\'b3\'ca\'b8\'ae\'bf\'a1 \'c4\'ab\'bf\'ee\'c6\'ae\'c7\'cf\'b8\'e7 \'b3\'d6\'be\'ee\'b5\'ce\'b0\'ed\
+// 2\'bc\'bc\'c6\'ae \'c0\'cc\'bb\'f3 \'bd\'c3\'c4\'d7\'c0\'b8\'b8\'e7 \'b0\'a1\'c0\'e5 \'b8\'b9\'c0\'cc \'bd\'c3\'c5\'b2 \'c1\'b6\'c7\'d5\'c0\'bb \'b0\'e1\'b0\'fa\'bf\'a1 \'c3\'df\'b0\'a1\'c7\'cf\'bf\'a9 \'c7\'d8\'b0\'e1\'c7\'cf\'bf\'b4\'c0\'bd
+\f1 \
+\
+import\cf4  Foundation\
+\
+\cf2 func\cf4  \cf5 solution\cf4 (\cf5 _\cf4  orders:[\cf6 String\cf4 ], \cf5 _\cf4  course:[\cf6 Int\cf4 ]) -> [\cf6 String\cf4 ] \{\
+    \cf2 var\cf4  result = [\cf6 String\cf4 ]()\
+    \cf2 var\cf4  temp = [\cf6 String\cf4 ]()\
+    \cf2 var\cf4  dic = [\cf6 String\cf4 :\cf6 Int\cf4 ]()\
+    \cf7 // 
+\f0 \'c1\'b6\'c7\'d5
+\f1  
+\f0 \'bb\'cc\'b1\'e2
+\f1 .\cf4 \
+    \cf2 func\cf4  \cf5 combi\cf4 (\cf5 arr\cf4 : [\cf6 String\cf4 ], \cf5 depth\cf4 : \cf6 Int\cf4 , \cf5 count\cf4 : \cf6 Int\cf4 , \cf5 selected\cf4 : [\cf6 String\cf4 ]) \{\
+        \cf2 if\cf4  count == \cf8 0\cf4  \{\
+            temp.\cf9 append\cf4 (selected.\cf9 sorted\cf4 ().\cf9 joined\cf4 ())\
+            \cf2 return\cf4 \
+        \}\
+       \
+        \cf2 if\cf4  depth == arr.\cf10 count\cf4  \{\
+            \cf2 return\cf4 \
+        \}\
+        \cf2 var\cf4  newSelected = selected\
+        newSelected.\cf9 append\cf4 (arr[depth])\
+       \
+        combi(arr: arr, depth: depth+\cf8 1\cf4 , count: count-\cf8 1\cf4 , selected: newSelected)\
+       \
+        combi(arr: arr, depth: depth+\cf8 1\cf4 , count: count, selected: selected)\
+    \}\
+    \cf7 //
+\f0 \'b0\'a2
+\f1  
+\f0 \'bc\'d5\'b4\'d4\'b8\'b6\'b4\'d9
+\f1  
+\f0 \'b3\'aa\'bf\'c3
+\f1  
+\f0 \'bc\'f6
+\f1  
+\f0 \'c0\'d6\'b4\'c2
+\f1  
+\f0 \'bc\'bc\'c6\'ae\'b8\'de\'b4\'ba
+\f1  
+\f0 \'bb\'cc\'b1\'e2
+\f1 .\cf4 \
+    \cf2 for\cf4  customer \cf2 in\cf4  orders\{\
+        \cf2 for\cf4  num \cf2 in\cf4  course \{\
+            \cf2 let\cf4  arr = customer.\cf9 map\cf4 \{\cf6 String\cf4 ($0)\}\
+            combi(arr: arr, depth: \cf8 0\cf4 , count: num, selected: [])\
+        \}\
+    \}\
+    \cf7 // 
+\f0 \'b5\'f1\'bc\'c5\'b3\'ca\'b8\'ae\'bf\'a1
+\f1  
+\f0 \'bc\'bc\'c6\'ae\'b8\'de\'b4\'ba
+\f1  
+\f0 \'ba\'b0\'b7\'ce
+\f1  
+\f0 \'b8\'ee\'b9\'f8
+\f1  
+\f0 \'b3\'aa\'bf\'d4\'b3\'aa
+\f1  
+\f0 \'bc\'bc\'b1\'e2
+\f1 \cf4 \
+    \cf2 for\cf4  menu \cf2 in\cf4  temp \{\
+        \cf2 if\cf4  \cf2 var\cf4  count = dic[menu] \{\
+            count += \cf8 1\cf4 \
+            dic[menu] = count\
+        \}\cf2 else\cf4  \{\
+            dic[menu] = \cf8 1\cf4 \
+        \}\
+    \}\
+    \cf7 //
+\f0 \'bc\'bc\'c6\'ae
+\f1  
+\f0 \'b0\'b3\'bc\'f6
+\f1  
+\f0 \'ba\'b0\'b7\'ce
+\f1  2
+\f0 \'b9\'f8
+\f1  
+\f0 \'c0\'cc\'bb\'f3
+\f1  
+\f0 \'c1\'d6\'b9\'ae
+\f1  
+\f0 \'b5\'c6\'b4\'c2\'c1\'f6
+\f1 , 
+\f0 \'b0\'b3\'bc\'f6\'ba\'b0\'b7\'ce
+\f1  
+\f0 \'c3\'d6\'b4\'eb\'b4\'c2
+\f1  
+\f0 \'b8\'ee\'c0\'ce\'c1\'f6
+\f1 !\cf4 \
+    \cf2 for\cf4  num \cf2 in\cf4  course \{\
+        \cf2 let\cf4  numDic = dic.\cf9 filter\cf4 \{ $0.\cf10 key\cf4 .\cf10 count\cf4  == num\}\
+        \cf2 if\cf4  \cf2 let\cf4  maxValue = numDic.\cf10 values\cf4 .\cf9 max\cf4 ()\{\
+            \cf2 if\cf4  maxValue > \cf8 1\cf4 \{ \cf7 // 
+\f0 \'c3\'d6\'b4\'eb
+\f1  
+\f0 \'bc\'bc\'c6\'ae
+\f1  
+\f0 \'b8\'de\'b4\'ba\'b4\'c2
+\f1  2
+\f0 \'b9\'f8\'c0\'cc\'bb\'f3
+\f1  
+\f0 \'c1\'d6\'b9\'ae
+\f1  
+\f0 \'b5\'c6\'be\'ee\'be\'df
+\f1  
+\f0 \'c3\'df\'b0\'a1\'b5\'ca
+\f1 \cf4 \
+                \cf2 let\cf4  arr = numDic.\cf9 filter\cf4 \{ $1 == maxValue \}.\cf10 keys\cf4 .\cf9 map\cf4 \{\cf6 String\cf4 ($0)\}\
+                result.\cf9 append\cf4 (\cf9 contentsOf\cf4 : arr)\
+            \}\
+        \}\
+    \}\
+    \
+    \cf2 return\cf4  result.\cf9 sorted\cf4 ()\
+\}\
+}
