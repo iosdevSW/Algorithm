@@ -1,0 +1,146 @@
+{\rtf1\ansi\ansicpg949\cocoartf2638
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fnil\fcharset129 AppleSDGothicNeo-Regular;}
+{\colortbl;\red255\green255\blue255;\red252\green95\blue163;\red31\green31\blue36;\red255\green255\blue255;
+\red65\green161\blue192;\red208\green168\blue255;\red252\green106\blue93;\red208\green191\blue105;\red108\green121\blue134;
+\red161\green103\blue230;\red161\green103\blue230;}
+{\*\expandedcolortbl;;\csgenericrgb\c98839\c37355\c63833;\csgenericrgb\c12054\c12284\c14131;\csgenericrgb\c100000\c100000\c100000\c85000;
+\csgenericrgb\c25490\c63137\c75294;\csgenericrgb\c81681\c65692\c99927;\csgenericrgb\c98912\c41558\c36568;\csgenericrgb\c81498\c74939\c41233;\csgenericrgb\c42394\c47462\c52518;
+\csgenericrgb\c63137\c40392\c90196;\csgenericrgb\c63232\c40219\c90115;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab577
+\pard\tx577\pardeftab577\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf2 \cb3 func\cf4  \cf5 solution\cf4 (\cf5 _\cf4  str1:\cf6 String\cf4 , \cf5 _\cf4  str2:\cf6 String\cf4 ) -> \cf6 Int\cf4  \{\
+    \cf2 if\cf4  str1 == \cf7 ""\cf4  && str2 == \cf7 ""\cf4  \{\
+        \cf2 return\cf4  \cf8 65536\cf4 \
+    \}\
+    \
+    \cf9 //
+\f1 \'c3\'b3\'b8\'ae\'c7\'cf\'b1\'e2
+\f0  
+\f1 \'bd\'b1\'b0\'d4
+\f0  Array
+\f1 \'ba\'af\'c8\'af
+\f0  
+\f1 \'b9\'d7
+\f0 , 
+\f1 \'b4\'eb\'bc\'d2\'b9\'ae\'c0\'da
+\f0  
+\f1 \'b1\'b8\'ba\'d0\'c0\'bb
+\f0  
+\f1 \'b5\'ce\'c1\'f6
+\f0  
+\f1 \'be\'ca\'b1\'e2
+\f0  
+\f1 \'c0\'a7\'c7\'d8
+\f0  uppercased\cf4 \
+    \cf2 let\cf4  str1 = str1.\cf10 uppercased\cf4 ().\cf10 map\cf4 \{\cf6 String\cf4 ($0)\}\
+    \cf2 let\cf4  str2 = str2.\cf10 uppercased\cf4 ().\cf10 map\cf4 \{\cf6 String\cf4 ($0)\}\
+    \cf2 var\cf4  similarity = \cf8 0.0\cf4 \
+    \cf9 //
+\f1 \'b4\'d9\'c1\'df
+\f0  
+\f1 \'c1\'fd\'c7\'d5\'c0\'bb
+\f0  
+\f1 \'c0\'fa\'c0\'e5\'c7\'d2
+\f0  
+\f1 \'b9\'e8\'bf\'ad
+\f0 \cf4 \
+    \cf2 var\cf4  str1Array = [\cf6 String\cf4 ]()\
+    \cf2 var\cf4  str2Array = [\cf6 String\cf4 ]()\
+    \cf9 //str1 
+\f1 \'b4\'d9\'c1\'df
+\f0  
+\f1 \'c1\'fd\'c7\'d5
+\f0  
+\f1 \'b1\'b8\'c7\'cf\'b1\'e2
+\f0 .\cf4 \
+    \cf2 for\cf4  i \cf2 in\cf4  \cf8 0\cf4 ...str1.\cf11 count\cf4 -\cf8 2\cf4  \{\
+        str1Array.\cf10 append\cf4 (str1[i] + str1[i+\cf8 1\cf4 ])\
+    \}\
+    \cf9 //str2 
+\f1 \'b4\'d9\'c1\'df
+\f0  
+\f1 \'c1\'fd\'c7\'d5
+\f0  
+\f1 \'b1\'b8\'c7\'cf\'b1\'e2
+\f0 .\cf4 \
+    \cf2 for\cf4  i \cf2 in\cf4  \cf8 0\cf4 ...str2.\cf11 count\cf4 -\cf8 2\cf4  \{\
+        str2Array.\cf10 append\cf4 (str2[i] + str2[i+\cf8 1\cf4 ])\
+    \}\
+    \cf9 //
+\f1 \'c6\'af\'bc\'f6\'b9\'ae\'c0\'da
+\f0  
+\f1 \'b0\'c5\'b8\'a3\'b1\'e2
+\f0 \cf4 \
+    str1Array = str1Array.\cf10 filter\cf4 \{ !$0.\cf10 contains\cf4 \{!$0.\cf11 isLetter\cf4 \} \}\
+    str2Array = str2Array.\cf10 filter\cf4 \{ !$0.\cf10 contains\cf4 \{!$0.\cf11 isLetter\cf4 \} \}\
+    \
+    \cf9 //
+\f1 \'b0\'c5\'b8\'a3\'b0\'ed
+\f0  
+\f1 \'b0\'f8\'b9\'e9\'c0\'cc\'b8\'e9
+\f0  
+\f1 \'c0\'af\'bb\'e7\'b5\'b5
+\f0  1 
+\f1 \'c0\'cc\'b9\'c7\'b7\'ce
+\f0  65536 
+\f1 \'b9\'dd\'c8\'af
+\f0 \cf4 \
+     \cf2 if\cf4  str1Array.\cf11 isEmpty\cf4  && str2Array.\cf11 isEmpty\cf4 \{\
+        \cf2 return\cf4  \cf8 65536\cf4 \
+    \}\
+    \
+    \cf2 var\cf4  intersection = [\cf6 String\cf4 ]() \cf9 // 
+\f1 \'b1\'b3\'c1\'fd\'c7\'d5
+\f0  
+\f1 \'b4\'e3\'b1\'e2
+\f0 \cf4 \
+    \cf2 var\cf4  temp = str1Array \cf9 // str1 - (str1
+\f1 \'b1\'b3\'c1\'fd\'c7\'d5
+\f0 str2) 
+\f1 \'b4\'e3\'c0\'bb
+\f0  
+\f1 \'ba\'af\'bc\'f6
+\f0 \cf4 \
+    \cf2 for\cf4  i \cf2 in\cf4  str2Array\{ \cf9 // str1 
+\f1 \'b1\'b3\'c1\'fd\'c7\'d5
+\f0  str2
+\f1 \'bf\'a1
+\f0  
+\f1 \'c7\'d8\'b4\'e7\'c7\'cf\'b4\'c2
+\f0  
+\f1 \'b0\'aa\'b5\'e9\'c0\'bb
+\f0  str1
+\f1 \'bf\'a1\'bc\'ad
+\f0  
+\f1 \'bb\'ad
+\f0 \cf4 \
+        \cf2 if\cf4  \cf2 let\cf4  idx = temp.\cf10 firstIndex\cf4 (\cf10 of\cf4 :i)\{\
+            temp.\cf10 remove\cf4 (\cf10 at\cf4 :idx)\
+            intersection.\cf10 append\cf4 (i)\
+        \}\
+    \}\
+    \
+    temp.\cf10 append\cf4 (\cf10 contentsOf\cf4 :str2Array) \cf9 // str1 - 
+\f1 \'b1\'b3\'c1\'fd\'c7\'d5
+\f0  + str2 = 
+\f1 \'c7\'d5\'c1\'fd\'c7\'d5
+\f0 \cf4 \
+    \cf2 var\cf4  union = temp \cf9 // 
+\f1 \'c7\'d5\'c1\'fd\'c7\'d5
+\f0 \cf4 \
+    \cf9 //
+\f1 \'c0\'af\'bb\'e7\'b5\'b5
+\f0  = 
+\f1 \'b1\'b3\'c1\'fd\'c7\'d5
+\f0 /
+\f1 \'c7\'d5\'c1\'fd\'c7\'d5
+\f0 \cf4 \
+    similarity = \cf6 Double\cf4 (intersection.\cf11 count\cf4 )/\cf6 Double\cf4 (union.\cf11 count\cf4 )\
+    \
+    \cf2 return\cf4  \cf6 Int\cf4 (similarity * \cf8 65536.0\cf4 )\
+\}\
+\
+\
+}
