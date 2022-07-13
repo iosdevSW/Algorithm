@@ -1,0 +1,110 @@
+{\rtf1\ansi\ansicpg949\cocoartf2638
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fnil\fcharset129 AppleSDGothicNeo-Regular;}
+{\colortbl;\red255\green255\blue255;\red252\green95\blue163;\red31\green31\blue36;\red255\green255\blue255;
+\red65\green161\blue192;\red208\green168\blue255;\red108\green121\blue134;\red161\green103\blue230;\red208\green191\blue105;
+\red161\green103\blue230;}
+{\*\expandedcolortbl;;\csgenericrgb\c98839\c37355\c63833;\csgenericrgb\c12054\c12284\c14131;\csgenericrgb\c100000\c100000\c100000\c85000;
+\csgenericrgb\c25490\c63137\c75294;\csgenericrgb\c81681\c65692\c99927;\csgenericrgb\c42394\c47462\c52518;\csgenericrgb\c63232\c40219\c90115;\csgenericrgb\c81498\c74939\c41233;
+\csgenericrgb\c63137\c40392\c90196;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab577
+\pard\tx577\pardeftab577\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf2 \cb3 import\cf4  Foundation\
+\
+\cf2 func\cf4  \cf5 solution\cf4 (\cf5 _\cf4  arr1:[[\cf6 Int\cf4 ]], \cf5 _\cf4  arr2:[[\cf6 Int\cf4 ]]) -> [[\cf6 Int\cf4 ]] \{\
+    \cf7 // 
+\f1 \'b0\'f6\'bc\'c0
+\f0  
+\f1 \'b0\'e1\'b0\'fa
+\f0  
+\f1 \'c7\'e0
+\f0 , 
+\f1 \'bf\'ad
+\f0  
+\f1 \'b0\'b3\'bc\'f6
+\f0 \cf4 \
+    \cf2 let\cf4  row = arr1.\cf8 count\cf4 \
+    \cf2 let\cf4  col = arr2[\cf9 0\cf4 ].count\
+    \cf7 // (x,m) * (m,y) = (x,y)
+\f1 \'b9\'e8\'bf\'ad
+\f0 \cf4 \
+    \cf2 var\cf4  result = [[\cf6 Int\cf4 ]].\cf10 init\cf4 (\cf10 repeating\cf4 :[\cf6 Int\cf4 ].\cf10 init\cf4 (\cf10 repeating\cf4 :\cf9 0\cf4 ,\cf10 count\cf4 :col),\cf10 count\cf4 : row)\
+    \
+    \cf2 for\cf4  x \cf2 in\cf4  \cf9 0\cf4 ..<row \{ \cf7 //
+\f1 \'b0\'e1\'b0\'fa
+\f0  
+\f1 \'b9\'e8\'bf\'ad
+\f0  (
+\f1 \'c7\'e0
+\f0  
+\f1 \'c5\'bd\'bb\'f6
+\f0 )\cf4 \
+        \cf2 for\cf4  y \cf2 in\cf4  \cf9 0\cf4 ..<col \{ \cf7 //
+\f1 \'b0\'e1\'b0\'fa
+\f0  
+\f1 \'b9\'e8\'bf\'ad
+\f0  (
+\f1 \'bf\'ad
+\f0  
+\f1 \'c5\'bd\'bb\'f6
+\f0 )\cf4 \
+            \cf7 // arr1
+\f1 \'c0\'ba
+\f0  
+\f1 \'c0\'fc\'c3\'bc
+\f0  
+\f1 \'bf\'ad\'c0\'bb
+\f0  1
+\f1 \'be\'bf
+\f0  
+\f1 \'c1\'f5\'b0\'a1
+\f0 ,arr2
+\f1 \'b4\'c2
+\f0  
+\f1 \'c0\'fc\'c3\'bc
+\f0  
+\f1 \'c7\'e0\'c0\'bb
+\f0  1
+\f1 \'be\'bf
+\f0  
+\f1 \'c1\'f5\'b0\'a1\'c7\'cf\'b8\'e7
+\f0  
+\f1 \'c0\'fc\'c3\'bc
+\f0  
+\f1 \'b0\'f6\'c0\'bb
+\f0  
+\f1 \'b4\'f5\'c7\'d4
+\f0 \cf4 \
+            \cf7 // arr1
+\f1 \'c0\'c7
+\f0  
+\f1 \'bf\'ad\'b0\'fa
+\f0  arr2
+\f1 \'c0\'c7
+\f0  
+\f1 \'c7\'e0\'c0\'c7
+\f0  
+\f1 \'b1\'e6\'c0\'cc\'c1\'df
+\f0  
+\f1 \'c0\'db\'c0\'ba
+\f0  
+\f1 \'b0\'aa
+\f0  
+\f1 \'b8\'b8\'c5\'ad\'b8\'b8
+\f0  
+\f1 \'c1\'f5\'b0\'a1\'bd\'c3\'c5\'b4
+\f0 \cf4 \
+            \cf2 for\cf4  i \cf2 in\cf4  \cf9 0\cf4 ..<\cf10 min\cf4 (arr1[\cf9 0\cf4 ].count,arr2.\cf8 count\cf4 ) \{\
+                 result[x][y] += arr1[x][i] * arr2[i][y]\
+            \}\
+        \}\
+    \}\
+    \
+    \cf2 return\cf4  result\
+\}\
+\
+//
+\f1 \'c8\'bf\'c0\'b2\'c0\'cc \'b1\'d7\'b7\'b8\'b0\'d4 \'b3\'aa\'bb\'da\'c1\'f8 \'be\'ca\'be\'d2\'c1\'f6\'b8\'b8 for\'b9\'ae 3\'b9\'f8\'c0\'b8\'b7\'ce \'b8\'bb\'b0\'ed \'b4\'d9\'b8\'a5 \'b9\'e6\'b9\'fd\'c0\'b8\'b7\'ce \'c7\'aa\'b4\'c2 \'b9\'fd\'c0\'ba \'be\'f8\'c0\'bb\'b1\'ee!!! \'b0\'ed\'b9\'ce \'c7\'ca\'bf\'e4
+\f0 \
+}
