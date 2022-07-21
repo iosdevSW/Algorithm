@@ -1,0 +1,175 @@
+{\rtf1\ansi\ansicpg949\cocoartf2638
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fnil\fcharset129 AppleSDGothicNeo-Regular;}
+{\colortbl;\red255\green255\blue255;\red252\green95\blue163;\red31\green31\blue36;\red255\green255\blue255;
+\red65\green161\blue192;\red208\green168\blue255;\red108\green121\blue134;\red161\green103\blue230;\red252\green106\blue93;
+\red208\green191\blue105;\red161\green103\blue230;}
+{\*\expandedcolortbl;;\csgenericrgb\c98839\c37355\c63833;\csgenericrgb\c12054\c12284\c14131;\csgenericrgb\c100000\c100000\c100000\c85000;
+\csgenericrgb\c25490\c63137\c75294;\csgenericrgb\c81681\c65692\c99927;\csgenericrgb\c42394\c47462\c52518;\csgenericrgb\c63137\c40392\c90196;\csgenericrgb\c98912\c41558\c36568;
+\csgenericrgb\c81498\c74939\c41233;\csgenericrgb\c63232\c40219\c90115;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab577
+\pard\tx577\pardeftab577\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf2 \cb3 import\cf4  Foundation\
+\
+\cf2 func\cf4  \cf5 solution\cf4 (\cf5 _\cf4  fees:[\cf6 Int\cf4 ], \cf5 _\cf4  records:[\cf6 String\cf4 ]) -> [\cf6 Int\cf4 ] \{\
+    \cf2 var\cf4  cars = [\cf6 String\cf4 :[\cf6 String\cf4 ]]()\
+    \cf2 var\cf4  answer = [\cf6 Int\cf4 ]()\
+    \
+    \cf2 for\cf4  record \cf2 in\cf4  records \{ \cf7 //
+\f1 \'c2\'f7\'b7\'ae\'ba\'b0\'b7\'ce
+\f0  
+\f1 \'c0\'d4\'c3\'e2\'c2\'f7
+\f0  
+\f1 \'c1\'a4\'ba\'b8
+\f0  
+\f1 \'b5\'f1\'bc\'c5\'b3\'ca\'b8\'ae\'bf\'a1
+\f0  
+\f1 \'b4\'e3\'b1\'e2
+\f0 \cf4 \
+        \cf2 let\cf4  split = record.\cf8 split\cf4 (\cf8 separator\cf4 : \cf9 " "\cf4 ).\cf8 map\cf4 \{\cf6 String\cf4 ($0)\}\
+        \cf2 if\cf4  \cf2 var\cf4  temp = cars[split[\cf10 1\cf4 ]]\{\
+            temp.\cf8 append\cf4 (split[\cf10 0\cf4 ] + \cf9 " "\cf4  + split[\cf10 2\cf4 ])\
+            cars[split[\cf10 1\cf4 ]] = temp\
+        \}\cf2 else\cf4  \{\
+            cars[split[\cf10 1\cf4 ]] = [split[\cf10 0\cf4 ] + \cf9 " "\cf4  + split[\cf10 2\cf4 ]]\
+        \}\
+    \}\
+    \
+    \cf7 //
+\f1 \'c2\'f7\'b7\'ae\'ba\'b0\'b7\'ce
+\f0  
+\f1 \'bd\'c3\'b0\'a3
+\f0  
+\f1 \'c8\'ae\'c0\'ce
+\f0  (
+\f1 \'c2\'f7\'b7\'ae\'b9\'f8\'c8\'a3
+\f0  
+\f1 \'b3\'b7\'c0\'ba\'bc\'f8
+\f0 )\cf4 \
+    \cf2 for\cf4  car \cf2 in\cf4  cars.\cf11 keys\cf4 .\cf8 sorted\cf4 (\cf8 by\cf4 :<)\{\
+        \cf7 // var carInfo = [String]()\cf4 \
+        \cf2 var\cf4  stack = [\cf6 Int\cf4 ]()\
+        \cf2 var\cf4  totalParkingTime = \cf10 0\cf4 \
+        \
+        \cf2 for\cf4  info \cf2 in\cf4  cars[car]! \{\
+            \cf2 let\cf4  split = info.\cf8 split\cf4 (\cf8 separator\cf4 : \cf9 " "\cf4 ).\cf8 map\cf4 \{\cf6 String\cf4 ($0)\}\
+            \cf2 let\cf4  time = returnTime(split[\cf10 0\cf4 ])\
+            \
+            \cf2 if\cf4  split[\cf10 1\cf4 ] == \cf9 "IN"\cf4  \{ \cf7 // In
+\f1 \'c0\'cc\'b8\'e9
+\f0  Stack
+\f1 \'bf\'a1
+\f0  
+\f1 \'c3\'df\'b0\'a1
+\f0 \cf4 \
+                stack.\cf8 append\cf4 (time)\
+            \}\cf2 else\cf4  \{ \cf7 // OUT 
+\f1 \'c0\'cc\'b8\'e9
+\f0  Stack
+\f1 \'bf\'a1
+\f0  
+\f1 \'b5\'e9\'be\'ee\'c0\'d6\'b4\'c2
+\f0  
+\f1 \'c3\'e2\'c2\'f7\'bd\'c3\'b0\'a3\'bf\'a1\'bc\'ad
+\f0  
+\f1 \'c0\'d4\'c2\'f7\'bd\'c3\'b0\'a3\'c0\'bb
+\f0  
+\f1 \'bb\'a9\'c1\'dc
+\f0 \cf4 \
+                \cf2 if\cf4  !stack.\cf11 isEmpty\cf4 \{\
+                    totalParkingTime += time - stack.\cf8 removeLast\cf4 () \cf7 // 
+\f1 \'c5\'e4\'c5\'bb\'bd\'c3\'b0\'a3
+\f0 \cf4 \
+                \}\
+            \}\
+        \}\
+        \cf7 // 
+\f1 \'b8\'b8\'be\'e0
+\f0  
+\f1 \'c0\'d4\'c2\'f7\'b4\'c2
+\f0  
+\f1 \'c0\'d6\'c0\'b8\'b3\'aa
+\f0  
+\f1 \'c3\'e2\'c2\'f7\'b1\'e2\'b7\'cf\'c0\'cc
+\f0  
+\f1 \'be\'f8\'c0\'b8\'b8\'e9
+\f0  23:59
+\f1 \'ba\'d0\'bf\'a1\'bc\'ad
+\f0  
+\f1 \'c0\'d4\'c2\'f7\'bd\'c3\'b0\'a3\'c0\'bb
+\f0  
+\f1 \'95\'fb\'bc\'ad
+\f0  
+\f1 \'c0\'fc\'c3\'bc
+\f0  
+\f1 \'bd\'c3\'b0\'a3\'bf\'a1
+\f0  
+\f1 \'c0\'fa\'c0\'e5
+\f0 \cf4 \
+        \cf2 if\cf4  !stack.\cf11 isEmpty\cf4 \{\
+            totalParkingTime += returnTime(\cf9 "23:59"\cf4 ) - stack.\cf8 removeLast\cf4 ()\
+        \}\
+        \cf7 // 
+\f1 \'c0\'fc\'c3\'bc
+\f0  
+\f1 \'bf\'e4\'b1\'dd
+\f0  
+\f1 \'b0\'e8\'bb\'ea
+\f0 \cf4 \
+        \cf2 let\cf4  totalFee = returnFee(fees: fees, time: totalParkingTime)\
+        answer.\cf8 append\cf4 (totalFee)\
+    \}\
+    \
+    \cf2 return\cf4  answer\
+\}\
+\
+\cf2 func\cf4  \cf5 returnTime\cf4 (\cf5 _\cf4  time: \cf6 String\cf4 )->\cf6 Int\cf4 \{\
+    \cf2 let\cf4  split = time.\cf8 split\cf4 (\cf8 separator\cf4 :\cf9 ":"\cf4 ).\cf8 map\cf4 \{\cf6 Int\cf4 (\cf6 String\cf4 ($0))!\}\
+    \cf2 return\cf4  split[\cf10 0\cf4 ] * \cf10 60\cf4  + split[\cf10 1\cf4 ] \cf7 // 
+\f1 \'ba\'d0\'c0\'b8\'b7\'ce
+\f0  
+\f1 \'ba\'af\'c8\'af\'c7\'cf\'bf\'a9
+\f0  
+\f1 \'b9\'dd\'c8\'af
+\f0 \cf4 \
+\}\
+\
+\
+\cf7 //
+\f1 \'c1\'d6\'c2\'f7\'bd\'c3\'b0\'a3
+\f0  
+\f1 \'b4\'eb\'ba\'f1
+\f0  
+\f1 \'bf\'e4\'b1\'dd
+\f0  
+\f1 \'b0\'e8\'bb\'ea
+\f0 \cf4 \
+\cf2 func\cf4  \cf5 returnFee\cf4 (\cf5 fees\cf4 : [\cf6 Int\cf4 ],\cf5 time\cf4 : \cf6 Int\cf4 )->\cf6 Int\cf4 \{\
+    \cf2 if\cf4  fees[\cf10 0\cf4 ] >= time \{\cf7 //
+\f1 \'b1\'e2\'ba\'bb\'bd\'c3\'b0\'a3\'ba\'b8\'b4\'d9
+\f0  
+\f1 \'c0\'fb\'b0\'c5\'b3\'aa
+\f0  
+\f1 \'b0\'b0\'b0\'d4
+\f0  
+\f1 \'c0\'cc\'bf\'eb\'bd\'c3
+\f0  
+\f1 \'b1\'e2\'ba\'bb\'bf\'e4\'b1\'dd\'b8\'b8
+\f0  
+\f1 \'ba\'ce\'b0\'fa
+\f0 \cf4 \
+        \cf2 return\cf4  fees[\cf10 1\cf4 ]\
+    \}\cf2 else\cf4  \{ \cf7 //
+\f1 \'c3\'ca\'b0\'fa\'bd\'c3
+\f0 \cf4 \
+        \cf2 var\cf4  unit = \cf10 0\cf4 \
+        \cf2 if\cf4  (time - fees[\cf10 0\cf4 ]) % fees[\cf10 2\cf4 ] == \cf10 0\cf4  \{\
+            unit = (time - fees[\cf10 0\cf4 ]) / fees[\cf10 2\cf4 ]\
+        \}\cf2 else\cf4  \{\
+            unit = (time - fees[\cf10 0\cf4 ]) / fees[\cf10 2\cf4 ] + \cf10 1\cf4 \
+        \}\
+        \cf2 return\cf4  fees[\cf10 1\cf4 ] + unit * fees[\cf10 3\cf4 ]\
+    \}\
+\}\
+}
