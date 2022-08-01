@@ -1,0 +1,73 @@
+{\rtf1\ansi\ansicpg949\cocoartf2638
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red255\green255\blue255;\red31\green31\blue36;\red252\green95\blue163;
+\red65\green161\blue192;\red208\green168\blue255;\red208\green191\blue105;\red161\green103\blue230;\red161\green103\blue230;
+}
+{\*\expandedcolortbl;;\csgenericrgb\c100000\c100000\c100000\c85000;\csgenericrgb\c12054\c12284\c14131;\csgenericrgb\c98839\c37355\c63833;
+\csgenericrgb\c25490\c63137\c75294;\csgenericrgb\c81681\c65692\c99927;\csgenericrgb\c81498\c74939\c41233;\csgenericrgb\c63137\c40392\c90196;\csgenericrgb\c63232\c40219\c90115;
+}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab577
+\pard\tx577\pardeftab577\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf2 \cb3 \
+\
+\cf4 func\cf2  \cf5 solution\cf2 (\cf5 _\cf2  n:\cf6 Int\cf2 ) -> [\cf6 Int\cf2 ] \{\
+    \cf4 let\cf2  lastNum = getLastNum(n)\
+    \cf4 var\cf2  temp = [[\cf6 Int\cf2 ]]()\
+    \cf4 for\cf2  num \cf4 in\cf2  \cf7 1\cf2 ...n \{\
+        temp.\cf8 append\cf2 ([\cf6 Int\cf2 ].\cf8 init\cf2 (\cf8 repeating\cf2 : \cf7 0\cf2 ,\cf8 count\cf2 : num))\
+    \}\
+    \
+    \cf4 let\cf2  dx = [\cf7 0\cf2 ,\cf7 1\cf2 ,-\cf7 1\cf2 ,-\cf7 1\cf2 ]\
+    \cf4 let\cf2  dy = [\cf7 1\cf2 ,\cf7 0\cf2 ,-\cf7 1\cf2 ,\cf7 0\cf2 ]\
+    \cf4 var\cf2  dn = \cf7 0\cf2 \
+    \cf4 var\cf2  nx = \cf7 0\cf2 \
+    \cf4 var\cf2  ny = \cf7 0\cf2 \
+    \
+    \cf4 for\cf2  num \cf4 in\cf2  \cf7 1\cf2 ...lastNum \{\
+        temp[ny][nx] = num\
+        \
+        \cf4 if\cf2  num == lastNum \{\
+            \cf4 break\cf2 \
+        \}\
+        \
+        \cf4 while\cf2  \cf4 true\cf2 \{\
+            \cf4 let\cf2  nextX = nx + dx[dn]\
+            \cf4 let\cf2  nextY = ny + dy[dn]\
+            \cf4 if\cf2  nextY >= temp.\cf9 count\cf2  || temp[nextY].count <= nextX\{\
+                dn += \cf7 1\cf2 \
+                dn %= \cf7 4\cf2 \
+                \cf4 continue\cf2 \
+            \}\
+            \
+            \cf4 if\cf2  temp[nextY][nextX] != \cf7 0\cf2  \{\
+                dn += \cf7 1\cf2 \
+                dn %= \cf7 4\cf2 \
+                \cf4 continue\cf2 \
+            \}\
+            \
+            nx = nextX\
+            ny = nextY\
+            \cf4 break\cf2 \
+        \}\
+    \}\
+    \cf4 var\cf2  result = [\cf6 Int\cf2 ]()\
+    \cf4 for\cf2  array \cf4 in\cf2  temp \{\
+        result += array\
+    \}\
+    \
+    \cf4 return\cf2  result\
+\}\
+\
+\cf4 func\cf2  \cf5 getLastNum\cf2 (\cf5 _\cf2  num: \cf6 Int\cf2 )-> \cf6 Int\cf2  \{\
+    \cf4 var\cf2  count = \cf7 0\cf2 \
+    \cf4 for\cf2  i \cf4 in\cf2  \cf7 1\cf2 ...num \{\
+        \cf4 for\cf2  _ \cf4 in\cf2  \cf7 1\cf2 ...i \{\
+            count += \cf7 1\cf2 \
+        \}\
+    \}\
+    \
+    \cf4 return\cf2  count\
+\}\
+}
