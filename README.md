@@ -1,4 +1,4 @@
 # Algorithm
 Algorithm study using swift
 
-Notion : https://working-melody-26f.notion.site/Algorithm-Study-4b74304b445843a289185b8b11667d9b
+Notion : [Notion Algorithm Study](https://iosdevsw.notion.site/Algorithm-9ebaf7c4f3bd42a5b4adc70b5c094f9d?pvs=4)
